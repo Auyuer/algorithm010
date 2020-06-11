@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+         * 1. 三层循环
+         */
+         var threeSum = function(nums) {
+            if(nums == null || nums.length < 3) {
+                return []
+            }
+            let result = new Set()
+            let res = []
+            for(let i = 0; i < nums.length - 2; i++) {
+                for(let j = i + 1; j < nums.length - 1; j++) {
+                    for(let k = j + 1; k < nums.length; k++) {
+                        if(nums[i] + nums[j] + nums[k] == 0) {
+                            let arrList = [nums[i],nums[j],nums[k]]
+                            let arrStr = String(arrList.sort((a,b) => {
+                              return a - b;
+                            }));
+
+                            if(!result.has(arrStr)) {
+                                result.add(arrStr)
+                                res.push(arrList)
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(res)
+            return res
+        };
+        /*
+         * 2. 
+         */
+
+        var threeSum = function(nums) {
+            if(nums == null || nums.length < 3) {
+                return []
+            }
+            let target = 0;
+            let start
+            let end
+            let result = []
+
+            nums.sort((a, b) => {
+                return a - b
+            })
+            
+            for(let i = 0; i < nums.length - 2; i++) {
+                if(nums[i] > 0) {
+                    break
+                }
+                if(i > 0 && nums[i] == nums[i - 1]) {
+                    continue
+                }
+                start = i + 1
+                end = nums.length - 1
+
+                while(start < end) {
+                    if(nums[i] + nums[start] + nums[end] == 0) {
+                        result.push([nums[i], nums[start], nums[end]])
+
+                        while(start < end && nums[start] == nums[start + 1]) {
+                            start++
+                        }
+                        while(start < end && nums[end] == nums[end + 1]) {
+                            end--
+                        }
+                        start++
+                        end--
+                    } else if (nums[i] + nums[start] + nums[end] < 0) {
+                        while(start < end && nums[start] == nums[start + 1]){
+                            start++
+                        }
+                        start++
+                    } else {
+                        while(start < end && nums[end] == nums[end - 1]){
+                            end--
+                        }
+                        end--
+                    }
+                }
+            }
+            return result
+        };
+        console.log(threeSum([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]))
+        
+    </script>
+</body>
+</html>

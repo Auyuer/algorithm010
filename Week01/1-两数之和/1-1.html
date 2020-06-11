@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         *  双循环 O(n ^ 2)
+         */
+         var twoSum = function(nums, target) {
+            if(nums.length < 2) {
+                return []
+            }
+            for(let i = 0; i < nums.length - 1; i++) {
+                for(let j = i + 1; j < nums.length; j++) {
+                    if(nums[i] + nums[j] == target) {
+                        return [i, j]
+                    }
+                }
+            }
+            return []
+        }
+
+        /**
+         *  一次循环+map O(n)
+         */
+        // var twoSum = function(nums, target) {
+        //     if(nums.length < 2) {
+        //         return []
+        //     }
+        //     let mapNew = new Map()
+        //     let complete
+        //     for(let i = 0; i < nums.length; i++) {
+        //         complete = target - nums[i]
+        //         // console.log(complete, map)
+        //         if(mapNew.has(complete)) {
+        //             // console.log(complete,map,nums[i],map[nums[i]], i)
+        //             // console.log(mapNew, complete, mapNew[complete])
+        //             return [mapNew.get(complete), i] 
+        //         }
+        //         // console.log(1111)
+        //         mapNew.set(nums[i], i)
+        //     }
+        //     // console.log(map)
+        // };
+        console.log(twoSum([2, 7, 11, 15], 9))
+    </script>
+</body>
+</html>
