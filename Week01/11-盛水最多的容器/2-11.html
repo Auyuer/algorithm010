@@ -13,13 +13,8 @@
             let area = 0
 
             for(let i = 0; i < j;) {
-                console.log(1111,i, j)
                 area = Math.min(height[i], height[j]) * (j - i)
-
                 height[i] > height[j] ? height[j--] : height[i++]
-
-                console.log(2222,i, j)
-
                 maxArea = Math.max(maxArea, area)
             }
             return maxArea
