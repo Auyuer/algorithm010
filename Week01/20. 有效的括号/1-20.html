@@ -7,7 +7,67 @@
 </head>
 <body>
     <script>
-        
+        // var isValid = function(s) {
+        //     if(s == '') { return true}
+        //     if(s.trim().length % 2 !== 0) {
+        //         return false
+        //     }
+        //     if([']', '}', ')'].indexOf(s[0]) > -1){return false} 
+
+        //     let map = { 
+        //         ']': '[',
+        //         '}': '{',
+        //         ')': '('
+        //     }
+        //     let stack = []
+        //     for ( let i = 0; i < s.length; i++) {
+        //         // console.log(s[i])
+        //         if(s[i] == '[' || s[i] == '{' || s[i] == '(') {
+        //             stack.push(s[i])
+        //         } else {
+        //             // console.log(stack && stack[stack.length-1], map[s[i]], stack[stack.length-1] ==  map[s[i]])
+        //             if(stack[stack.length-1] ==  map[s[i]]) {
+        //                 stack.pop()
+        //             }
+        //         }
+        //     }
+        //     // console.log(stack,stack.length)
+        //     if(stack.length == 0) {
+        //         return true
+        //     }
+        //     return false
+        // };
+
+        var isValid = function(s) {
+            if(s.trim('').length % 2 !==0) {return false}
+
+            if([']', ')', '}'].indexOf(s[0]) > -1) { return false}
+
+            let obj = {
+                ']': '[',
+                '}': '{',
+                ')': '('
+            };
+            let stack = [];
+
+            [...s].forEach((v, i) => {
+                if(v == '[' || v == '{' || v == '(') {
+                    stack.push(v)
+                } else {
+                    if (obj[v] == stack[stack.length - 1]) {
+                        stack.pop()
+                    }
+                }
+            });
+
+            if(stack.length == 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        console.log(isValid(""))
     </script>
 </body>
 </html>
