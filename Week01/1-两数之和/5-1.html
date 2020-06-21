@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var twoSum = function(nums, target) {
+        //     if(nums.length < 2) {
+        //         return []
+        //     }
+        //     for( let i = 0; i < nums.length - 1; i++) {
+        //         for( let j = i + 1; j < nums.length; j++) {
+        //             if(nums[i] + nums[j] == target) {
+        //                 return [i, j]
+        //             }
+        //         }
+        //     }
+        //     return []
+        // }
+
+        var twoSum = function(nums, target) {
+            if(nums.length < 2) {
+                return []
+            }
+            let complete = 0
+            let map = new Map()
+            for(let i = 0; i < nums.length; i++) {
+                complete = target - nums[i]
+                // console.log(complete)
+                if(map.has(complete)) {
+                    // console.log(111)
+                    return [map.get(complete), i]
+                }
+
+                map.set(nums[i], i)
+                // console.log(map)
+            }
+            return []
+        }
+        console.log(twoSum([3,2,4], 6))
+    </script>
+</body>
+</html>

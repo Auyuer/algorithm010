@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var groupAnagrams = function(strs) {
+        //     if(strs.length == 0) {
+        //         return []
+        //     }
+
+        //     let map = new Map ()
+        //     let result = []
+
+        //     for(let s of strs) {
+        //         const anagram = Array(26).fill(0)
+
+        //         for( let i = 0 ; i < s.length; i++) {
+        //             let item = s.charCodeAt(i) - 97
+        //             anagram[item]++
+        //         }
+        //         let str = anagram.join('')
+
+        //         map.has(str) ? map.set(str, [...map.get(str), s]) : map.set(str, [s])
+        //     }
+        //     for(let v of map) {
+        //         result.push(v[1])
+        //     }
+        //     return result
+        // }
+
+        var groupAnagrams = function(strs) {
+            if(strs.length == 0) {
+                return []
+            }
+
+            let map = {}
+            for(let s of strs) {
+                let str = [...s].sort()
+                map[str] = map[str] ? [...map[str], s] : [s]
+            }
+
+            return Object.values(map)
+        }
+        console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+    </script>
+</body>
+</html>

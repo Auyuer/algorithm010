@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var inorderTraversal = function(root) {
+        //     let nums = []
+        //     let fun = (root) => {
+        //         root.left && fun(root.left)
+        //         nums.push(root.val)
+        //         root.right && fun(root.right)
+        //     }
+        //     root && fun(root)
+        //     return nums
+        // }
+
+        var inorderTraversal = function(root) {
+            let stack = [];
+            let list = [];
+
+            while(root || stack.length) {
+                while(root) {
+                    stack.push(root)
+                    root = root.left
+                }
+                root = stack.pop()
+                list.push(root.val)
+                root = root.right
+            }
+            return list;
+        }
+    </script>
+</body>
+</html>

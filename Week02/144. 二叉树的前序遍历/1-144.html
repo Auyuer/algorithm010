@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var preorderTraversal = function(root) {
+        //     let nums = []
+
+        //     let fun = (root) => {
+        //         nums.push(root.val)
+        //         root.left && fun(root.left)
+        //         root.right && fun(root.right)
+        //     }
+
+        //     root && fun(root)
+        //     return nums;
+        // }
+
+        var preorderTraversal = function(root) {
+            let stack = [];
+            let nums = []
+
+            if(root) { stack.push(root.val) }
+            while(stack.length > 0) {
+                root = stack.pop()
+                nums.push(root.val)
+                
+                if(root.right) {
+                    stack.push(root.right)
+                }
+                if(root.left) {
+                    stack.push(root.left)
+                }
+
+            }
+            return nums
+        }
+    </script>
+</body>
+</html>
