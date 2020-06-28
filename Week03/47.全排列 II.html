@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var permuteUnique = function(nums) {
+            let list = []
+
+            generate([])
+
+            function generate(temp) {
+                if(temp.length == nums.length) {
+                    list.push([...temp])
+                    return
+                }
+
+                for(let i = 0; i < nums.length; i++) {
+                    // if(temp.includes(nums[i])) continue
+
+                    temp.push(nums[i])
+                    generate(temp)
+                    temp.pop()
+                }
+            }
+            console.log(list)
+            return list
+        };
+        console.log(permuteUnique([1,1,2]))
+    </script>
+</body>
+</html>

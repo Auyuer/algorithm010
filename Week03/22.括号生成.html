@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var generateParenthesis = function(n) {
+            let list = []
+
+            generate(0, 0, n, '')
+
+            function generate(left, right, n, s) {
+                // console.log('n')
+                if(left == n && right == n) {
+                    list.push(s)
+                    // console.log(1)
+
+                    return list
+                    // console.log(2)
+                }
+
+                if(left < n) {
+                    generate(left + 1, right, n, s + '(')
+                }
+
+                if(right < left) {
+                    generate(left, right + 1, n, s + ')')
+                }
+            }
+            console.log(list)
+            return list
+        };
+        generateParenthesis(3)
+    </script>
+</body>
+</html>

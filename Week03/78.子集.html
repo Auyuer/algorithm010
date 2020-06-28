@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var subsets = function(nums) {
+        //     let list = [[]], curr
+
+        //     for(let n of nums) {
+        //         curr = list.map((v) => [...v, n])
+        //         list = [...list, ...curr]
+        //     }
+        //     return list
+        // };
+
+        var subsets = function(nums) {
+            let result = []
+            fun(result, nums, [], 0)
+
+            function fun (result, nums, current, index) {
+                if(index == nums.length) {
+                    // result.push(current)
+                    return 
+                }
+
+                // console.log(result)
+                fun(result, nums, current, index + 1)
+                current = [...current, nums[index]]
+                // console.log(current)
+                result.push(current)
+
+                fun(result, nums, current, index + 1)
+                // current.length = current.length - 1
+            }
+            return result
+        }
+        console.log(subsets([1,2,3]))
+    </script>
+</body>
+</html>
