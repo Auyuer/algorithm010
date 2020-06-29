@@ -8,26 +8,28 @@
 <body>
     <script>
         var combine = function(n, k) {
-            
-            var res = [];
-            var could = [];
-            if(k==0){
+            let list = []
+            if(k == 0) {
                 return [[]]
             }
-            function dfs(start,n,k,res,could){
-                if(could.length == k){
-                    res.push(could.slice(0));
-                    return;
+            dfs(1, [])
+            function dfs(index, temp) {
+                if(temp.length == k) {
+                    list.push([...temp])
+                    return
                 }
-                for(var i = start ; i<n+1;i++){
-                    could.push(i);
-                    dfs(i+1,n,k,res,could);
-                    could.pop()
+
+                for(let i = index; i < n + 1; i++) {
+                    if(temp.includes(i)){continue}
+
+                    temp.push(i)
+                    dfs(i + 1, temp)
+                    temp.pop()
                 }
-                return res;
             }
-            return dfs(1,n,k,res,could)
+            return list
         };
+        console.log(combine(4, 2))
     </script>
 </body>
 </html>

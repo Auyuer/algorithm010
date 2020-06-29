@@ -12,11 +12,11 @@
             backtrack([])
 
             function backtrack (temp) {
-                console.log(list, temp)
+                // console.log(list, temp)
                 // 终止条件
                 if(temp.length == nums.length) {
-                    // list.push([...temp])
-                    list.push(temp)
+                    list.push([...temp])
+                    // list.push(temp)
                     return 
                 }
 
