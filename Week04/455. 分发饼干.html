@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var findContentChildren = function(g, s) {
+            let res = 0, indexG = 0, indexS = 0
+            let lenG = g.length
+            let lenS = s.length
+            g.sort((a, b) => a - b)
+            s.sort((a, b) => a - b)
+
+            while(indexG < lenG && indexS < lenS) {
+                if(g[indexG] <= s[indexS]) {
+                indexG++
+                res++
+                } 
+                indexS++
+            }
+            return res
+        }
+    </script>
+</body>
+</html>
